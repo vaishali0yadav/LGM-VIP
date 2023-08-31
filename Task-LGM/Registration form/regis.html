@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="heading">
+        <H1> Student Registration Form</H1>
+    </div>
+    <div class="registration-form">
+
+        <div class="form">
+            <h2> Enrollment Form</h2>
+            <div class="form-box">
+                <form id="registrationForm" action="">
+                    <div> Name : <input type="text" placeholder="Enter your name" required id="name"></div>
+                    <div> Course : <input type="text" placeholder="Enter your course" id="course"></div>
+                    <div>Stream : <input type="text" placeholder="Enter your stream" id="stream"></div>
+                    <div>Email-Id : <input type="email" placeholder="Enter your email address" required id="email">
+                    </div>
+                    <div>Gender : Male <input type="radio" name="myGender" value="Male"> Female <input type="radio"
+                            name="myGender" value="Female">
+                        Prefer Not Say <input type="radio" name="myGender" value="Others"></div>
+                    <div>Skills : HTML<input type="checkbox" name ="skill" value="HTML"> CSS <input type="checkbox"  name ="skill" value="CSS"> JavaScript <input
+                            type="checkbox"  name ="skill" value="JavaScript"></div>
+                    <button type="submit" value="Submit">Submit Now</button>
+                    <button type="reset">Reset form</button>
+                </form>
+            </div>
+        </div>
+        <div id="displayData" class="show-data"></div>
+    </div>
+    </div>
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var ele = document.getElementsByName('myGender');
+            for(i=0; i< ele.length; i++){
+                if(ele[i].checked)
+                    var Gender = ele[i].value;
+            }
+
+            var checkboxes = document.getElementsByName('skill');
+            var skills = "";
+            for(var j = 0; j<checkboxes.length; j++){
+                if(checkboxes[j].checked){
+                    skills += checkboxes[j].value + " ";
+                }
+            }
+
+            var name = document.getElementById("name").value;
+            var Course = document.getElementById("course").value;
+            var Stream = document.getElementById("stream").value;
+            // var Gender = document.getElementById("gender").value;
+            var email = document.getElementById("email").value;
+            // var skills = document.getElementByName("skill");
+
+            var displayData = document.getElementById("displayData");
+            displayData.innerHTML = " <h2> Entered Data : </h2>" + "<p><strong>Name: </strong> " + name + "</p>" + "<p><strong> Course : </strong>" + Course + "</p>" + "<p><strong> Stream : </strong>" + Stream + "</p>" + "<p><strong> Email-ID : </strong>" + email + "</p>" + "<p><strong> Gender : </strong>" + Gender + "</p>" + "<p><strong> Skills : </strong>" + skills + "</p>" ;
+        })
+    </script>
+</body>
+
+</html>
